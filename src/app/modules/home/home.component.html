@@ -1,0 +1,60 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="flex justify-content-center align-content-center text-align-center">
+      <form [formGroup]="logiForm" (ngSubmit)="onSubmitLoginForm()">
+        <p-card
+        styleClass="mt-10"
+        header="Login"
+        subheader="Faça login com sua conta existente"
+        *ngIf="loginCard">
+
+        <div class="flex justify-content align-content-center text-align-center mt-3">
+          <input type="email" pInputText placeholder="Email" formControlName="email"/>
+        </div>
+
+        <div class="flex justify-content align-content-center text-align-center mt-3">
+          <input type="password" pInputText placeholder="Senha" formControlName="password"/>
+        </div>
+
+        <div class="card flex justify-content-center mt-3">
+          <button type="submit" pButton label="Login" [disabled]="!this.logiForm.valid"></button>
+        </div>
+
+        <span class="flex justify-content-center align-content-center text-align-center mt-3 text-red-600 font-semibold"
+        (click)="loginCard = !loginCard" style="cursor: pointer;">
+          Criar Conta
+        </span>
+      </p-card>
+      </form>
+
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignUpForm()">
+      <p-card
+      styleClass="mt-10"
+      header="Criar Conta"
+      subheader="Crie já sua conta gratuita!"
+      *ngIf="!loginCard">
+
+      <div class="flex justify-content align-content-center text-align-center mt-3">
+        <input type="nome" pInputText placeholder="Nome" formControlName="name" />
+      </div>
+
+      <div class="flex justify-content align-content-center text-align-center mt-3">
+        <input type="email" pInputText placeholder="Email" formControlName="email" />
+      </div>
+
+      <div class="flex justify-content align-content-center text-align-center mt-3">
+        <input type="password" pInputText placeholder="Senha" formControlName="password" />
+      </div>
+
+      <div class="card flex justify-content-center mt-3">
+        <button type="submit" pButton label="Criar Conta" [disabled]="!this.signupForm.valid"></button>
+      </div>
+      <span class="flex justify-content-center align-content-center text-align-center mt-3 text-red-600 font-semibold" style="cursor:pointer" (click)="loginCard = !loginCard">
+        Fazer Login
+      </span>
+    </p-card>
+      </form>
+    </div>
+
+    </div>
+  </div>
