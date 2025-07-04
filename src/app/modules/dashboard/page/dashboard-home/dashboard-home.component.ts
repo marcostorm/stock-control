@@ -2,7 +2,7 @@ import { ProductsDataTransferService } from './../../../../shared/services/produ
 import { MessageService } from 'primeng/api';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products/products.service';
-import { GetAllProductsResponse } from 'src/app/models/interfaces/products/response/GetAllProducts';
+import { GetAllProductsResponse } from 'src/app/models/interfaces/products/response/GetAllProductsResponse';
 import { Subject, takeUntil } from 'rxjs';
 import { ChartData, ChartOptions } from 'chart.js';
 
@@ -30,7 +30,7 @@ export class DashboardHomeComponent implements OnInit, OnDestroy {
 
   getProductsDatas(): void {
     this.productsService
-      .getALlProducts()
+      .getAllProducts()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
