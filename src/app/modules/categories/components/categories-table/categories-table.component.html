@@ -14,7 +14,7 @@
     [rowHover]="true"
     [showCurrentPageReport]="true"
     dataKey="id"
-    currentPageReportTemplate="Mostrando {frist} de {last} de {totalRecords} produtos">
+    currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} produtos">
 
     <ng-template pTemplate="header">
       <tr>
@@ -43,6 +43,7 @@
           styleClass="p-button-info"
           icon="pi pi-plus"
           label="Adicionar"
+          (onClick)="handleCategoryEvent(addCategoryAction)"
 
           >
 

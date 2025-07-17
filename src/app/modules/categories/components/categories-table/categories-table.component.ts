@@ -20,9 +20,17 @@ export class CategoriesTableComponent {
   public editCategoryAction = CategoryEvent.EDIT_CATEGORY_ACTION;
 
   handleDeleteCategoryEvent(category_id: string, categoryName: string): void{
-    if(category_id != '' && categoryName != ''){
+    if(category_id !== '' && categoryName !== ''){
       this.deleteCategoryEvent.emit({ category_id, categoryName});
     }
+
   }
+
+  handleCategoryEvent(action: string, id?: string, categoryName?: string): void {
+    if(action && action!== ''){
+      this.categoryEvent.emit({action, id, categoryName});
+    }
+  }
+
 
 }
