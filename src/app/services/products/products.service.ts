@@ -1,9 +1,11 @@
+import { SaleProductResponse } from './../../models/interfaces/products/request/SaleProductResponse';
 import { CreateProductRequest } from './../../models/interfaces/products/request/CreateProductRequest';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, map } from 'rxjs';
 import { EditProductRequest } from 'src/app/models/interfaces/products/request/EditProductRequests';
+import { SaleProductRequest } from 'src/app/models/interfaces/products/request/SaleProductRequest';
 import { CreateProductResponse } from 'src/app/models/interfaces/products/response/CreateProductResponse';
 import { DeleteProductResponse } from 'src/app/models/interfaces/products/response/DeleteProductResponse';
 import { GetAllProductsResponse } from 'src/app/models/interfaces/products/response/GetAllProductsResponse';
@@ -57,6 +59,21 @@ export class ProductsService {
       requestDatas,
       this.httpOptions
     )
+  }
+
+  saleProduct(requestDatas: SaleProductRequest): Observable<SaleProductResponse>{
+    return this.http.put<SaleProductResponse>(
+      `${this.API_URL}/product/sale`,
+      {
+        amount: requestDatas?.amount
+      }, {
+        ...this.httpOptions,
+        params: {
+          product_id: requestDatas?.product_id
+        }
+      }
+    )
+
   }
 
 
